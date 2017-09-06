@@ -1,0 +1,11 @@
+#/bin/sh
+
+CURRENT=`ioreg -c AppleSmartBattery|grep -i MaxCapacity|awk '{print $5}'`
+DESIGN=`ioreg -c AppleSmartBattery|grep -i DesignCapacity|awk '{print $5}'`
+
+echo "Designed Max : ${DESIGN} mAh"
+echo "Current Max  : ${CURRENT} mAh"
+echo "Status       : $(((CURRENT * 100) / DESIGN)) %"
+
+exit 0
+
